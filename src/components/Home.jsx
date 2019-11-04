@@ -13,6 +13,16 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import Paper from '@material-ui/core/Paper';
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
+import CheckIcon from '@material-ui/icons/Check';
+import FormatAlignLeftIcon from '@material-ui/icons/FormatAlignLeft';
+import FormatAlignCenterIcon from '@material-ui/icons/FormatAlignCenter';
+import FormatAlignRightIcon from '@material-ui/icons/FormatAlignRight';
+import FormatAlignJustifyIcon from '@material-ui/icons/FormatAlignJustify';
+import TextField from '@material-ui/core/TextField';
+
 
 function Copyright() {
   return (
@@ -47,6 +57,8 @@ const useStyles = makeStyles(theme => ({
   heroContent: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(8, 0, 6),
+    minHeight: "100%",
+    height : "100%",
   },
   heroButtons: {
     marginTop: theme.spacing(4),
@@ -72,10 +84,27 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const cards = [1, 2, 3];
+const cards = [1, 2, 3, 4, 5, 6];
 
 export default function Album() {
   const classes = useStyles();
+
+  const [selected, setSelected] = React.useState(false);
+  const [alignment, setAlignment] = React.useState('left');
+  const [values, setValues] = React.useState();
+
+
+  const handleChange = (event, newAlignment) => {
+    setAlignment(newAlignment);
+  };
+
+  const handleAlignment = (event, newAlignment) => {
+    setAlignment(newAlignment);
+  };
+
+  const handleChange2 = name => event => {
+    setValues({ ...values, [name]: event.target.value });
+  };
 
   return (
     <React.Fragment>
@@ -88,49 +117,67 @@ export default function Album() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
-          <Container maxWidth="sm">
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Album layout
-            </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Something short and leading about the collection below—its contents, the creator, etc.
-              Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-              entirely.
-            </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    Login
+          <Grid container spacing={3}>
+            <Grid item xs={6}>
+              <Paper>
+                <Grid container spacing={3}>
+                  <Grid item xs={8}>
+                    Buscar por:
+                  </Grid>
+                  <Grid item xs={4}>
+                    <ToggleButtonGroup
+                      value={alignment}
+                      exclusive
+                      onChange={handleAlignment}
+                      aria-label="text alignment"
+                    >
+                      <ToggleButton value="left" aria-label="left aligned">
+                        Texto
+                  </ToggleButton>
+                      <ToggleButton value="center" aria-label="centered">
+                        Link
+                  </ToggleButton>
+                  <Button>
+                    Resumir
                   </Button>
+                    </ToggleButtonGroup>
+                  </Grid>
                 </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Register
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
-          </Container>
+                <TextField
+                  id="outlined-multiline-flexible"
+                  label="Multiline"
+                  multiline
+                  fullWidth
+                  rowsMax="4"
+                  onChange={handleChange2('multiline')}
+                  className={classes.textField}
+                  margin="normal"
+                  helperText="hello"
+                  variant="outlined"
+                />
+              </Paper>
+            </Grid>
+            <Grid item xs={6}>
+              <Paper>
+                <Typography>Resultados</Typography>
+                <TextField
+                  id="outlined-multiline-flexible"
+                  label="Multiline"
+                  multiline
+                  fullWidth
+                  rowsMax="4"
+                  onChange={handleChange2('multiline')}
+                  className={classes.textField}
+                  margin="normal"
+                  helperText="hello"
+                  variant="outlined"
+                />
+              </Paper>
+            </Grid>
+          </Grid>
         </div>
-        <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
-        </Container>
-      </main>
-      {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </footer>
-      {/* End footer */}
     </React.Fragment>
   );
 }

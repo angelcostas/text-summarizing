@@ -31,14 +31,16 @@ function App(props) {
   return (
     <MuiThemeProvider theme={theme}>
       <Switch>
-        <Route path="/" component={LandingPage} />
-        <ProtectedRoute
+        <Route exact path="/" component={LandingPage} />
+        <Route path="/home" component={Home}/>
+
+        {/* <ProtectedRoute
           exact
           path="/home"
           component={Home}
           isAuthenticated={isAuthenticated}
           isVerifying={isVerifying}
-        />
+        /> */}
       </Switch>
     </MuiThemeProvider>
   );
