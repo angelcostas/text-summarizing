@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
-import { Route, Switch } from 'react-router-dom'
-import Login from './components/Login';
+import { Route, Switch } from 'react-router-dom';
+import LandingPage from './components/LandingPage';
 import { connect } from 'react-redux';
-
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import ProtectedRoute from './components/ProtectedRoute';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import Home from './components/Home';
 
 const theme = createMuiTheme({
     typography: {
@@ -26,18 +27,18 @@ const theme = createMuiTheme({
 })
 
 function App(props) {
-  // const { isAuthenticated, isVerifying } = props;
+  const { isAuthenticated, isVerifying } = props;
   return (
     <MuiThemeProvider theme={theme}>
       <Switch>
-        <Route path="/login" component={Login} />
-        {/* <ProtectedRoute
+        <Route path="/" component={LandingPage} />
+        <ProtectedRoute
           exact
           path="/home"
           component={Home}
           isAuthenticated={isAuthenticated}
           isVerifying={isVerifying}
-        /> */}
+        />
       </Switch>
     </MuiThemeProvider>
   );
