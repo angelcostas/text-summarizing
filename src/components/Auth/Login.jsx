@@ -25,23 +25,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                Y-Analytics
-      </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
-
 
 const useStyles = makeStyles(theme => ({
     paper: {
-        marginTop: theme.spacing(8),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -91,10 +77,10 @@ function Login(props) {
     } else {
         return (
             <div>
-                <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
-                    Log In
+                <Button variant="contained" color="secondary" onClick={handleClickOpen}>
+                    Iniciar sesion
                 </Button>
-                <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+                <Dialog onClose={handleClose} open={open}>
                     <DialogContent dividers>
                         <div className={classes.paper}>
                             <Avatar className={classes.avatar}>
@@ -130,7 +116,7 @@ function Login(props) {
                                     fullWidth
                                     margin="normal"
                                     variant="contained"
-                                    color="primary"
+                                    color="secondary"
                                     className={classes.submit}
                                     onClick={handleSubmit}
                                 >

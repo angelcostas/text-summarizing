@@ -25,19 +25,6 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                Your Website
-        </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
-
 const useStyles = makeStyles(theme => ({
     '@global': {
         body: {
@@ -45,7 +32,6 @@ const useStyles = makeStyles(theme => ({
         },
     },
     paper: {
-        marginTop: theme.spacing(8),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -98,8 +84,8 @@ function Signup(props) {
     } else {
         return (
             <div>
-                <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
-                    Sign Up
+                <Button variant="contained" color="secondary" onClick={handleClickOpen}>
+                    Registrarse
                 </Button>
                 <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
                     <DialogContent dividers>
@@ -170,7 +156,7 @@ function Signup(props) {
                                 <Button
                                     fullWidth
                                     variant="contained"
-                                    color="primary"
+                                    color="secondary"
                                     className={classes.submit}
                                     onClick={handleSubmit}
                                 >

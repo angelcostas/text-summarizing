@@ -13,7 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-import BackgroundImage from '../assets/images/backgroundImage2.png';
+import BackgroundImage from '../assets/images/seo.svg';
+
 import Login from './Auth/Login';
 import Signup from './Auth/Signup';
 import StarIcon from '@material-ui/icons/StarBorder';
@@ -43,33 +44,33 @@ const footers = [
 
 const tiers = [
   {
-    title: 'Free',
+    title: 'Gratis',
     price: '0',
-    description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
+    description: ['20 Analisis por mes', 'Analizis de textos'],
     buttonText: 'Sign up for free',
     buttonVariant: 'outlined',
   },
   {
     title: 'Pro',
-    subheader: 'Most popular',
+    subheader: 'Mas vendido',
     price: '15',
     description: [
-      '20 users included',
-      '10 GB of storage',
-      'Help center access',
-      'Priority email support',
+      '200 Analisis por mes',
+      'Analisis de textos',
+      'Analisis de links',
+      'Analisis en 5 idiomas diferentes',
     ],
     buttonText: 'Get started',
     buttonVariant: 'contained',
   },
   {
-    title: 'Enterprise',
+    title: 'Empresarial',
     price: '30',
     description: [
-      '50 users included',
-      '30 GB of storage',
-      'Help center access',
-      'Phone & email support',
+      'Analisis ilimatos',
+      'Analisis de textos',
+      'Analisis de links',
+      'Analisis de PDF'
     ],
     buttonText: 'Contact us',
     buttonVariant: 'outlined',
@@ -77,18 +78,6 @@ const tiers = [
 ];
 
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -133,8 +122,11 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2),
   },
   heroContent: {
+    backgroundColor : "#00959A",
     backgroundImage : 'url('+ BackgroundImage +')',
-    backgroundSize : 'cover',
+    backgroundRepeat : "no-repeat",
+    backgroundPosition : "center",
+    backgroundSize : "15%",
     padding: theme.spacing(8, 0, 6),
   },
   heroButtons: {
@@ -159,6 +151,9 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
+  image : {
+
+  }
 }));
 
 const cards = [1, 2, 3];
@@ -169,7 +164,7 @@ export default function Album() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="relative">
+      <AppBar position="relative" color="secondary">
         <Toolbar>
           <MenuBookIcon className={classes.icon} />
           <Typography variant="h6" color="inherit" noWrap>
@@ -180,7 +175,7 @@ export default function Album() {
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
-          <Container maxWidth="sm" style={{background : '../assets/images/backgroundImage.png' }}>
+          <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               Text Surgeon
             </Typography>
@@ -202,7 +197,7 @@ export default function Album() {
 
 
         
-        <Container maxWidth="md" component="main">
+        <Container maxWidth="md" component="main" style={{marginTop : 30}}>
         <Grid container spacing={5} alignItems="flex-end">
           {tiers.map(tier => (
             // Enterprise card is full width at sm breakpoint
@@ -233,11 +228,6 @@ export default function Album() {
                     ))}
                   </ul>
                 </CardContent>
-                <CardActions>
-                  <Button fullWidth variant={tier.buttonVariant} color="primary">
-                    {tier.buttonText}
-                  </Button>
-                </CardActions>
               </Card>
             </Grid>
           ))}
@@ -246,17 +236,6 @@ export default function Album() {
 
 
       </main>
-      {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </footer>
-      {/* End footer */}
     </React.Fragment>
   );
 }

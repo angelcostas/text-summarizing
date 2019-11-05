@@ -22,6 +22,7 @@ import FormatAlignCenterIcon from '@material-ui/icons/FormatAlignCenter';
 import FormatAlignRightIcon from '@material-ui/icons/FormatAlignRight';
 import FormatAlignJustifyIcon from '@material-ui/icons/FormatAlignJustify';
 import TextField from '@material-ui/core/TextField';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
 
 
 function Copyright() {
@@ -44,6 +45,9 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
+  textField: {
+    padding: theme.spacing(2),
+  },
   title: {
     flexGrow: 1,
   },
@@ -57,11 +61,12 @@ const useStyles = makeStyles(theme => ({
   heroContent: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(8, 0, 6),
-    minHeight: "100%",
-    height : "100%",
   },
   heroButtons: {
     marginTop: theme.spacing(4),
+  },
+  container: {
+    minHeight: "100%"
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
@@ -109,75 +114,76 @@ export default function Album() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="relative">
+      <AppBar position="relative" color="secondary">
         <Toolbar>
-          <CameraIcon className={classes.icon} />
+          <MenuBookIcon className={classes.icon} />
           <Typography variant="h6" color="inherit" noWrap>
-            Album layout
+            Text Surgeon
           </Typography>
         </Toolbar>
       </AppBar>
-        {/* Hero unit */}
-        <div className={classes.heroContent}>
-          <Grid container spacing={3}>
-            <Grid item xs={6}>
-              <Paper>
-                <Grid container spacing={3}>
-                  <Grid item xs={8}>
-                    Buscar por:
-                  </Grid>
-                  <Grid item xs={4}>
-                    <ToggleButtonGroup
-                      value={alignment}
-                      exclusive
-                      onChange={handleAlignment}
-                      aria-label="text alignment"
-                    >
-                      <ToggleButton value="left" aria-label="left aligned">
-                        Texto
+      {/* Hero unit */}
+
+      <Grid container spacing={3} className={classes.heroContent} >
+        <Grid item xs={6}>
+          <Paper style={{ minHeight: "70vh" }}>
+            <Grid container spacing={3}>
+              <Grid item xs={4}>
+                <Typography variant="h4" style={{ marginLeft: 5 }}>
+                  Buscar por:
+                    </Typography>
+              </Grid>
+              <Grid item xs={8}>
+                <ToggleButtonGroup
+                  value={alignment}
+                  exclusive
+                  onChange={handleAlignment}
+                  aria-label="text alignment"
+                >
+                  <ToggleButton value="left" size="large"  >
+                    <Typography style={{ paddingLeft: 20, paddingRight: 20 }}>Texto</Typography>
                   </ToggleButton>
-                      <ToggleButton value="center" aria-label="centered">
-                        Link
+                  <ToggleButton value="center" >
+                    <Typography style={{ paddingLeft: 20, paddingRight: 20 }}>Link</Typography>
                   </ToggleButton>
-                  <Button>
-                    Resumir
-                  </Button>
-                    </ToggleButtonGroup>
-                  </Grid>
-                </Grid>
-                <TextField
-                  id="outlined-multiline-flexible"
-                  label="Multiline"
-                  multiline
-                  fullWidth
-                  rowsMax="4"
-                  onChange={handleChange2('multiline')}
-                  className={classes.textField}
-                  margin="normal"
-                  helperText="hello"
-                  variant="outlined"
-                />
-              </Paper>
+                </ToggleButtonGroup>
+              </Grid>
             </Grid>
-            <Grid item xs={6}>
-              <Paper>
-                <Typography>Resultados</Typography>
-                <TextField
-                  id="outlined-multiline-flexible"
-                  label="Multiline"
-                  multiline
-                  fullWidth
-                  rowsMax="4"
-                  onChange={handleChange2('multiline')}
-                  className={classes.textField}
-                  margin="normal"
-                  helperText="hello"
-                  variant="outlined"
-                />
-              </Paper>
-            </Grid>
-          </Grid>
-        </div>
+            <TextField
+              id="outlined-multiline-flexible"
+              multiline
+              fullWidth
+              height="80%"
+              rows="15"
+              onChange={handleChange2('multiline')}
+              className={classes.textField}
+              margin="normal"
+              variant="outlined"
+            />
+            <Button style={{ marginLeft: 10 }} variant="contained" color="secondary" style={{marginLeft : "70%"}} >
+              <Typography style={{ paddingLeft: 20, paddingRight: 20 }}>Resumir</Typography>
+            </Button>
+          </Paper>
+        </Grid>
+        
+        <Grid item xs={6}>
+          <Paper style={{ minHeight: "70vh" }}>
+            <Typography variant="h4" style={{ marginLeft: 5 }}>
+              Resultado:
+            </Typography>
+            <TextField
+              id="outlined-multiline-flexible"
+              multiline
+              fullWidth
+              rows="15"
+              onChange={handleChange2('multiline')}
+              className={classes.textField}
+              margin="normal"
+              variant="outlined"
+            />
+          </Paper>
+        </Grid>
+      </Grid>
     </React.Fragment>
   );
 }
