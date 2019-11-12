@@ -23,7 +23,8 @@ import FormatAlignRightIcon from '@material-ui/icons/FormatAlignRight';
 import FormatAlignJustifyIcon from '@material-ui/icons/FormatAlignJustify';
 import TextField from '@material-ui/core/TextField';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
-
+import api from '../api';
+import LogOut from './Auth/LogOut';
 
 function Copyright() {
   return (
@@ -89,8 +90,6 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6];
-
 export default function Album() {
   const classes = useStyles();
 
@@ -99,29 +98,39 @@ export default function Album() {
   const [values, setValues] = React.useState();
 
 
-  const handleChange = (event, newAlignment) => {
-    setAlignment(newAlignment);
+  const handleChange = name => (event) => {
+    setValues({ ...values, [name]: event.target.value });
   };
 
   const handleAlignment = (event, newAlignment) => {
     setAlignment(newAlignment);
   };
 
-  const handleChange2 = name => event => {
-    setValues({ ...values, [name]: event.target.value });
+  const handleClick = () =>{
+    api.post('/text',"do00")
+      .then(res =>{
+        console.log(res);
+      })
+      .catch(error =>{
+        console.log(error);
+      });
+
   };
+
 
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="relative" color="secondary">
+      <AppBar position="static" color="secondary">
         <Toolbar>
           <MenuBookIcon className={classes.icon} />
-          <Typography variant="h6" color="inherit" noWrap>
+          <Typography variant="h6" color="inherit" noWrap style={{ flex: 1 }}>
             Text Surgeon
           </Typography>
+          <LogOut/>
         </Toolbar>
       </AppBar>
+      {console.log(values)}
       {/* Hero unit */}
 
       <Grid container spacing={3} className={classes.heroContent} >
@@ -155,12 +164,12 @@ export default function Album() {
               fullWidth
               height="80%"
               rows="15"
-              onChange={handleChange2('multiline')}
+              onChange={handleChange('multiline')}
               className={classes.textField}
               margin="normal"
               variant="outlined"
             />
-            <Button style={{ marginLeft: 10 }} variant="contained" color="secondary" style={{marginLeft : "70%"}} >
+            <Button style={{ marginLeft: 10 }} variant="contained" color="secondary" style={{marginLeft : "70%"}} onClick={handleClick} >
               <Typography style={{ paddingLeft: 20, paddingRight: 20 }}>Resumir</Typography>
             </Button>
           </Paper>
@@ -176,7 +185,7 @@ export default function Album() {
               multiline
               fullWidth
               rows="15"
-              onChange={handleChange2('multiline')}
+              onChange={handleChange('multiline')}
               className={classes.textField}
               margin="normal"
               variant="outlined"
