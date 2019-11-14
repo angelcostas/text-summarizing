@@ -1,43 +1,18 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
-import CheckIcon from '@material-ui/icons/Check';
-import FormatAlignLeftIcon from '@material-ui/icons/FormatAlignLeft';
-import FormatAlignCenterIcon from '@material-ui/icons/FormatAlignCenter';
-import FormatAlignRightIcon from '@material-ui/icons/FormatAlignRight';
-import FormatAlignJustifyIcon from '@material-ui/icons/FormatAlignJustify';
 import TextField from '@material-ui/core/TextField';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import api from '../api';
 import LogOut from './Auth/LogOut';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -93,9 +68,9 @@ const useStyles = makeStyles(theme => ({
 export default function Album() {
   const classes = useStyles();
 
-  const [selected, setSelected] = React.useState(false);
   const [alignment, setAlignment] = React.useState('left');
   const [values, setValues] = React.useState();
+  const [text, setText] = React.useState();
 
 
   const handleChange = name => (event) => {
@@ -111,9 +86,9 @@ export default function Album() {
     var bodyFormData = new FormData();
     bodyFormData.set('text', values.multiline);
 
-    api.post('/text', bodyFormData)
+    api.post('/search', bodyFormData)
       .then(res =>{
-        console.log(res);
+        setText(res.data);
       })
       .catch(error =>{
         console.log(error);
@@ -134,7 +109,6 @@ export default function Album() {
           <LogOut/>
         </Toolbar>
       </AppBar>
-      {console.log(values)}
       {/* Hero unit */}
 
       <Grid container spacing={3} className={classes.heroContent} >
@@ -189,7 +163,7 @@ export default function Album() {
               multiline
               fullWidth
               rows="15"
-              onChange={handleChange('text')}
+              value={text}
               className={classes.textField}
               margin="normal"
               variant="outlined"
