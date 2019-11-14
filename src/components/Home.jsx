@@ -107,7 +107,11 @@ export default function Album() {
   };
 
   const handleClick = () =>{
-    api.post('/text',"do00")
+
+    var bodyFormData = new FormData();
+    bodyFormData.set('text', values.multiline);
+
+    api.post('/text', bodyFormData)
       .then(res =>{
         console.log(res);
       })
@@ -185,7 +189,7 @@ export default function Album() {
               multiline
               fullWidth
               rows="15"
-              onChange={handleChange('multiline')}
+              onChange={handleChange('text')}
               className={classes.textField}
               margin="normal"
               variant="outlined"
