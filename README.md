@@ -49,3 +49,5 @@ Open [http://localhost:3006](http://localhost:3006) to view it in the browser.
   * NLTK
   * Tensorflow
   * flask-cors
+  
+ if you want to know more about the API for summarazing leve me a message on Twitter:@MemoVDevG
