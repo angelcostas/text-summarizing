@@ -7,7 +7,7 @@ By angelcostas
 
 ## Overview
 
-With Text Surgeon you can your text/link and our app will summarizing and returns to you the most importan part of the text/link. At this point Text Surgeon can summarizing Spanish's text, but we are working in the algorithm to add more languages.
+With Text Surgeon you can paste your text/link and our app will summarize and return to you the most important parts of the text. At this point Text Surgeon can summarize Spanish's text, but we are working in the algorithm to add more languages.
 
 ## App Overview
 ![alt text](https://res.cloudinary.com/memovdg/image/upload/c_scale,w_400/v1573793123/1_gn88ta.png) ![alt text](https://res.cloudinary.com/memovdg/image/upload/c_scale,w_400/v1573793117/2_vpru3k.png)
