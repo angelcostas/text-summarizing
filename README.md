@@ -38,7 +38,7 @@ Then run the app with
 Runs the app in the development mode.<br>
 Open [http://localhost:3006](http://localhost:3006) to view it in the browser.
 
-###### [Back-end by @Memo28]
+###### Back-end by @Memo28
 * Python
   * Flask
   * NLTK
