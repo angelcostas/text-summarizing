@@ -1,6 +1,7 @@
 ## Text Surgeon
 
 By @Memo28
+By angelcostas
 
 ### [APP](https://text-summarazing.herokuapp.com)
 
@@ -43,11 +44,11 @@ Then run the app with
 Runs the app in the development mode.<br>
 Open [http://localhost:3006](http://localhost:3006) to view it in the browser.
 
-###### [Back-end by @Memo28](https://github.com/Memo28/api-text-summarazing)
+###### [Back-end by @angelcostas](https://github.com/Memo28/api-text-summarazing)
 * Python
   * Flask
   * NLTK
   * Tensorflow
   * flask-cors
   
- if you want to know more about the API for summarazing leve me a message on Twitter:@MemoVDevG
+ if you want to know more about the API for summarazing leave me a message on Twitter:@MemoVDevG
