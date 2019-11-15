@@ -13,6 +13,7 @@ import TextField from '@material-ui/core/TextField';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import api from '../api';
 import LogOut from './Auth/LogOut';
+import PaymentModal from './Payment/PaymentModal';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -65,7 +66,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Album() {
+export default function Album(props) {
   const classes = useStyles();
 
   const [alignment, setAlignment] = React.useState('left');
@@ -106,6 +107,11 @@ export default function Album() {
           <Typography variant="h6" color="inherit" noWrap style={{ flex: 1 }}>
             Text Surgeon
           </Typography>
+          { ! props.isSubscriber ?
+                    <PaymentModal />
+                    :
+                    null
+          }
           <LogOut/>
         </Toolbar>
       </AppBar>
