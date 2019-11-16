@@ -3,7 +3,7 @@
 By @Memo28
 By angelcostas
 
-### [APP](https://text-summarazing.herokuapp.com)
+### [APP](https://text-summarazing.herokuapp.com) <-- Click here to try it
 
 ## Overview
 
